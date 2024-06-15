@@ -20,7 +20,7 @@ const AllBookings = () => {
 
   //Pagination
   const handlePaginationChange = (value) => {
-    if (value == 1) {
+    if (value === 1) {
       setPage(1);
     } else {
       setPage(value);
@@ -71,9 +71,9 @@ const AllBookings = () => {
             let color =
               tag.length > 5
                 ? "geekblue"
-                : tag.length == 5
+                : tag.length === 5
                 ? "green"
-                : tag.length == 3
+                : tag.length === 3
                 ? "volcano"
                 : "purple";
 
@@ -97,7 +97,7 @@ const AllBookings = () => {
       key: "bookingStatus",
       render: (bookingStatus, key) => (
         <>
-          {bookingStatus == "Pending" ? (
+          {bookingStatus === "Pending" ? (
             // approve & decline buttons
             <div className="d-flex">
               <button
@@ -148,7 +148,7 @@ const AllBookings = () => {
                 <CloseOutlined />
               </button>
             </div>
-          ) : bookingStatus == "Confirmed" ? (
+          ) : bookingStatus === "Confirmed" ? (
             <Tag color="green">{bookingStatus.toUpperCase()}</Tag>
           ) : (
             <Tag color="volcano">{bookingStatus.toUpperCase()}</Tag>

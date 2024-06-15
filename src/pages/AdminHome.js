@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteCar, getAllCars } from "../redux/actions/carsAction";
-import Moment from "react-moment";
 import {
   Row,
   Col,
   DatePicker,
-  Avatar,
   Card,
   Input,
   Space,
@@ -72,7 +70,7 @@ function AdminHome() {
 
   //Pagination
   const handlePaginationChange = (value) => {
-    if (value == 1) {
+    if (value === 1) {
       setPage(1);
     } else {
       setPage(value);
@@ -180,7 +178,7 @@ function AdminHome() {
         </Col>
       </Row>
 
-      {loading == true && <Spinner />}
+      {loading === true && <Spinner />}
 
       <div
         style={{

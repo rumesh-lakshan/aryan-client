@@ -39,7 +39,7 @@ function Home() {
     selectedCars = cars;
 
     for (var car of cars) {
-      if (car.bookedTimeSlots.length == 0) {
+      if (car.bookedTimeSlots.length === 0) {
         //check if the car is already in the array
         if (!selectedCars.includes(car)) {
           selectedCars = selectedCars.filter((item) => item !== car);
@@ -75,12 +75,12 @@ function Home() {
 
   //
   const handleChange = (value) => {
-    if (value == "All") {
+    if (value === "All") {
       setTotalcars(cars);
     } else {
       var temp = [];
       for (var car of cars) {
-        if (car.category == value) {
+        if (car.category === value) {
           temp.push(car);
         }
       }
@@ -104,7 +104,7 @@ function Home() {
 
   //Pagination
   const handlePaginationChange = (value) => {
-    if (value == 1) {
+    if (value === 1) {
       setPage(1);
     } else {
       setPage(value);

@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {/* Admin Routes */}
-        {user && user.role == "Admin" ? (
+        {user && user.role === "Admin" ? (
           <Routes>
             <Route path="/" element={<Navigate to="/admin" />} />
             <Route path="/admin" element={<AdminHome />} />
@@ -30,7 +30,7 @@ function App() {
             <Route path="/allbookings" element={<AllBookings />} />
           </Routes>
         ) : // User Routes
-        user && user.role == "User" ? (
+        user && user.role === "User" ? (
           <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />

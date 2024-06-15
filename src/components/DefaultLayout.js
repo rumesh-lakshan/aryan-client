@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Button, Dropdown, Space, Row, Col } from "antd";
+import { Dropdown, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
 
@@ -93,7 +93,7 @@ function DefaultLayout(props) {
 
               <Dropdown
                 menu={{
-                  items: user.role == "Admin" ? adminItems : items,
+                  items: user.role === "Admin" ? adminItems : items,
                 }}
                 placement="bottom"
               >

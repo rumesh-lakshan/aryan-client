@@ -22,12 +22,12 @@ function UserBookings() {
 
   //Get the array length of the filtered cars
   const carsLength = bookings.filter(
-    (booking) => booking.user._id == user._id
+    (booking) => booking.user._id === user._id
   ).length;
 
   //Pagination
   const handlePaginationChange = (value) => {
-    if (value == 1) {
+    if (value === 1) {
       setPage(1);
     } else {
       setPage(value);
@@ -66,14 +66,14 @@ function UserBookings() {
             gap: "40px",
           }}
         >
-          {bookings.filter((booking) => booking.user._id == user._id).length ==
+          {bookings.filter((booking) => booking.user._id === user._id).length ===
           0 ? (
             <h6 className="text-center mt-4 mb-4">
               You have not booked any cars yet
             </h6>
           ) : (
             bookings
-              .filter((booking) => booking.user._id == user._id)
+              .filter((booking) => booking.user._id === user._id)
               .slice((page - 1) * 4, page * 4)
               .map((booking) => {
                 return (
@@ -141,7 +141,7 @@ function UserBookings() {
                         {booking.totalAmount} LKR
                       </p>
 
-                      {booking.bookingStatus == "Pending" ? (
+                      {booking.bookingStatus === "Pending" ? (
                         <div className="d-flex align-items-center">
                           <p style={{ color: "#ffc107" }}>
                             <b>Booking Status : </b>
@@ -173,7 +173,7 @@ function UserBookings() {
                             </button>
                           </Popconfirm>
                         </div>
-                      ) : booking.bookingStatus == "Confirmed" ? (
+                      ) : booking.bookingStatus === "Confirmed" ? (
                         <p style={{ color: "green" }}>
                           <b>Booking Status : </b>
                           {booking.bookingStatus}

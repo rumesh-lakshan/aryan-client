@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Form, Input, message } from "antd";
-import DefaultLayout from "../components/DefaultLayout";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { useDispatch, useSelector } from "react-redux";

@@ -13,7 +13,7 @@ import axios from "axios";
 import AllBookings from "./pages/AllBookings";
 
 function App() {
-   axios.defaults.baseURL = "http://localhost:5000";
+   axios.defaults.baseURL = "https://aryan-api.onrender.com";
   //Get user details from local storage
   const user = JSON.parse(localStorage.getItem("user"));
 

@@ -27,7 +27,7 @@ function App() {
             <Route path="/admin" element={<AdminHome />} />
             <Route path="/addcar" element={<AddCar />} />
             <Route path="/editcar/:carid" element={<EditCar />} />
-            <Route path="/getallbookings" element={<AllBookings />} />
+            <Route path="/allbookings" element={<AllBookings />} />
           </Routes>
         ) : // User Routes
         user && user.role === "User" ? (

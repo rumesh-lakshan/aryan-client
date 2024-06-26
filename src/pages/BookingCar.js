@@ -88,7 +88,7 @@ function BookingCar({ match }) {
 
   // Get time slots
   const getTimeSlots = () => {
-    axios.get(`/api/bookings/getcarbookings/${carid}`).then((res) => {
+    axios.get(`/api/bookings/getallbookings/${carid}`).then((res) => {
       setTimeSlots(res.data.bookings);
     });
   };

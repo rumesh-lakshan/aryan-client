@@ -8,9 +8,11 @@ function DefaultLayout(props) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    console.log('Handling logout...'); // Debugging statement
     localStorage.removeItem("user");
-    <Link to="/login"></Link>
+    navigate("/login"); // Ensure this line is executed
   };
+  
 
   const items = [
     {

@@ -13,37 +13,42 @@ import axios from "axios";
 import AllBookings from "./pages/AllBookings";
 
 function App() {
-   axios.defaults.baseURL = "https://aryan-api.onrender.com";
-  //Get user details from local storage
+  axios.defaults.baseURL = "https://aryan-api.onrender.com";
+  // Get user details from local storage
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="App">
       <BrowserRouter>
-        {/* Admin Routes */}
-        {user && user.role === "Admin" ? (
-          <Routes>
-            <Route path="/" element={<Navigate to="/admin" />} />
-            <Route path="/admin" element={<AdminHome />} />
-            <Route path="/addcar" element={<AddCar />} />
-            <Route path="/editcar/:carid" element={<EditCar />} />
-            <Route path="/allbookings" element={<AllBookings />} />
-          </Routes>
-        ) : // User Routes
-        user && user.role === "User" ? (
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/bookcar/:carid" element={<BookingCar />} />
-            <Route path="/userbookings" element={<UserBookings />} />
-          </Routes>
-        ) : (
-          <Routes>
-            <Route path="/" element={<Navigate to="/login" />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        )}
+        <Routes>
+          {/* Conditional Routing Based on User Role */}
+          {user ? (
+            user.role === "Admin" ? (
+              <>
+                <Route path="/" element={<Navigate to="/admin" />} />
+                <Route path="/admin" element={<AdminHome />} />
+                <Route path="/addcar" element={<AddCar />} />
+                <Route path="/editcar/:carid" element={<EditCar />} />
+                <Route path="/allbookings" element={<AllBookings />} />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/bookcar/:carid" element={<BookingCar />} />
+                <Route path="/userbookings" element={<UserBookings />} />
+              </>
+            )
+          ) : (
+            <>
+              <Route path="/" element={<Navigate to="/login" />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </>
+          )}
+          {/* Fallback Route */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

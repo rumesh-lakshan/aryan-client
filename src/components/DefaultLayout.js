@@ -1,10 +1,17 @@
 import React from "react";
 import { Dropdown, Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
 
 function DefaultLayout(props) {
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
   const items = [
     {
       key: "1",
@@ -16,16 +23,7 @@ function DefaultLayout(props) {
     },
     {
       key: "3",
-      label: (
-        <li
-          onClick={() => {
-            localStorage.removeItem("user");
-            window.location.href = "/login";
-          }}
-        >
-          Logout
-        </li>
-      ),
+      label: <div onClick={handleLogout}>Logout</div>,
     },
   ];
 
@@ -40,16 +38,7 @@ function DefaultLayout(props) {
     },
     {
       key: "3",
-      label: (
-        <li
-          onClick={() => {
-            localStorage.removeItem("user");
-            window.location.href = "/login";
-          }}
-        >
-          Logout
-        </li>
-      ),
+      label: <div onClick={handleLogout}>Logout</div>,
     },
   ];
 

@@ -173,20 +173,6 @@ function AdminHome() {
                   Add New Vehicle
                 </div>
               </Link>
-
-              {/* <Link to="/allbookings">
-                <div
-                  style={{
-                    color: "white",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <PlusCircleOutlined />
-                  Bookings
-                </div>
-              </Link> */}
             </button>
           </div>
         </Col>

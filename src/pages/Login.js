@@ -1,34 +1,29 @@
-// components/Login.js
-
 import React from "react";
 import { Row, Col, Form, Input } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/actions/userActions";
 import AOS from "aos";
 import Spinner from "../components/Spinner";
 import "aos/dist/aos.css"; // You can also use <link> for styles
-
+// ..
 AOS.init();
 
 function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  async function onFinish(values) {
-    try {
-      await dispatch(userLogin(values));
-      navigate("/");
-    } catch (error) {
-      // Handle error if needed
-    }
+  function onFinish(values) {
+    dispatch(userLogin(values));
+    console.log(values);
   }
 
   return (
     <div
       className="login"
-      style={{ overflowX: "hidden" }}
+      style={{
+        overflowX: "hidden",
+      }}
     >
       {loading && <Spinner />}
       <Row gutter={16} className="d-flex align-items-center">
@@ -46,7 +41,9 @@ function Login() {
             layout="vertical"
             className="login-form p-5"
             onFinish={onFinish}
-            style={{ borderRadius: "20px" }}
+            style={{
+              borderRadius: "20px",
+            }}
           >
             <h1>Login</h1>
             <hr />
@@ -57,6 +54,8 @@ function Login() {
             >
               <Input />
             </Form.Item>
+
+            
             <Form.Item
               name="contact"
               label="Contact Number"
@@ -64,13 +63,15 @@ function Login() {
             >
               <Input type="Number" />
             </Form.Item>
+
             <Form.Item
               name="drivinln"
-              label="Driving License Number"
+              label="Driven License Number"
               rules={[{ required: true }]}
             >
-              <Input />
+              <Input type="Text" />
             </Form.Item>
+
             <Form.Item
               name="password"
               label="Password"
@@ -93,7 +94,7 @@ function Login() {
               Login
             </button>
             <br />
-            <Link to="/register">Not Registered? Click Here To Register</Link>
+            <Link to={"/register"}>Not Registered? Click Here To Register</Link>
           </Form>
         </Col>
       </Row>

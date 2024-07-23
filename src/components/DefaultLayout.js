@@ -36,7 +36,7 @@ function DefaultLayout(props) {
     },
     {
       key: "2",
-      label: <a href="/allbookings">All Bookings</a>,
+      label: <a href="/">All Bookings</a>,
     },
     {
       key: "3",

@@ -174,7 +174,7 @@ function AdminHome() {
                 </div>
               </Link>
 
-              <Link to="/allbookings">
+              {/* <Link to="/allbookings">
                 <div
                   style={{
                     color: "white",
@@ -186,7 +186,7 @@ function AdminHome() {
                   <PlusCircleOutlined />
                   Bookings
                 </div>
-              </Link>
+              </Link> */}
             </button>
           </div>
         </Col>

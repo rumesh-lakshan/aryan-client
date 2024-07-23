@@ -8,14 +8,14 @@ function DefaultLayout(props) {
   const items = [
     {
       key: "1",
-      label: <a href="/">Home</a>,
+      label: <Link to="/">Home</Link>,
     },
     {
       key: "2",
-      label: <a href="/userbookings">My Bookings</a>,
+      label: <Link to="/userbookings">My Bookings</Link>,
     },
     {
-      key: "4",
+      key: "3",
       label: (
         <li
           onClick={() => {
@@ -32,11 +32,11 @@ function DefaultLayout(props) {
   const adminItems = [
     {
       key: "1",
-      label: <a href="/">Home</a>,
+      label: <Link to="/">Home</Link>,
     },
     {
       key: "2",
-      label: <a href="/allbookings">All Bookings</a>,
+      label: <Link to="/allbookings">All Bookings</Link>,
     },
     {
       key: "3",
@@ -52,12 +52,9 @@ function DefaultLayout(props) {
       ),
     },
   ];
+
   return (
-    <div
-      style={{
-        overflowX: "hidden",
-      }}
-    >
+    <div style={{ overflowX: "hidden" }}>
       <div className="header bs1">
         <Row gutter={16} justify="center">
           <Col lg={20} sm={24} xs={24}>
@@ -101,7 +98,6 @@ function DefaultLayout(props) {
                   style={{
                     display: "flex",
                     alignItems: "center",
-
                     cursor: "pointer",
                   }}
                 >
@@ -123,7 +119,7 @@ function DefaultLayout(props) {
       </div>
       <div className="content">{props.children}</div>
       <Footer style={{ textAlign: "center" }}>
-        ARYAN RENT A CAR AND TOURS ©2024 {" "}
+        ARYAN RENT A CAR AND TOURS ©2024{" "}
         <span
           style={{
             color: "darkslategray",
@@ -132,7 +128,7 @@ function DefaultLayout(props) {
             fontWeight: "bold",
           }}
         >
-           | TriniphiX
+          | TriniphiX
         </span>
       </Footer>
     </div>

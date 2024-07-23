@@ -4,15 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
 
 function DefaultLayout(props) {
-  const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
     console.log('Handling logout...'); // Debugging statement
     localStorage.removeItem("user");
     navigate("/login"); // Ensure this line is executed
   };
-  
 
   const items = [
     {
@@ -43,6 +42,12 @@ function DefaultLayout(props) {
       label: <div onClick={handleLogout}>Logout</div>,
     },
   ];
+
+  // Redirect to login page if user is null
+  if (!user) {
+    navigate("/login");
+    return null; // Ensure that nothing is rendered
+  }
 
   return (
     <div style={{ overflowX: "hidden" }}>

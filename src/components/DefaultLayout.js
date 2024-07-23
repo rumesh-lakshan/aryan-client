@@ -9,7 +9,7 @@ function DefaultLayout(props) {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/login");
+    <Link to="/"></Link>
   };
 
   const items = [

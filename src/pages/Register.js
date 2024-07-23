@@ -1,41 +1,45 @@
+// components/Register.js
+
 import React from "react";
 import { Row, Col, Form, Input, message } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../redux/actions/userActions";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
-// ..
+
 AOS.init();
 
 function Register() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  function onFinish(values) {
-    //check if password and confirm password are same
+  async function onFinish(values) {
+    // Check if password and confirm password are same
     if (values.password !== values.cpassword) {
       message.error("Password and Confirm Password do not match");
       return;
-    } else {
-      dispatch(userRegister(values));
+    }
+
+    try {
+      await dispatch(userRegister(values));
+      navigate("/login");
+    } catch (error) {
+      // Handle error if needed
     }
   }
 
   return (
     <div
       className="login"
-      style={{
-        overflowX: "hidden",
-      }}
+      style={{ overflowX: "hidden" }}
     >
       {loading && <Spinner />}
-
       <Row gutter={16} className="d-flex align-items-center">
         <Col lg={16} style={{ position: "relative" }}>
-          <h1 className="login-logo">Aryen rent a car and tours</h1>
+          <h1 className="login-logo">Aryen Rent A Car and Tours</h1>
           <img
             data-aos="slide-right"
             data-aos-duration="1500"
@@ -49,9 +53,7 @@ function Register() {
             layout="vertical"
             className="login-form p-5"
             onFinish={onFinish}
-            style={{
-              borderRadius: "20px",
-            }}
+            style={{ borderRadius: "20px" }}
           >
             <h1>Register</h1>
             <hr />
@@ -62,7 +64,6 @@ function Register() {
             >
               <Input />
             </Form.Item>
-
             <Form.Item
               name="contact"
               label="Contact Number"
@@ -70,17 +71,13 @@ function Register() {
             >
               <Input />
             </Form.Item>
-
             <Form.Item
               name="drivenln"
-              label="Driven License Number"
+              label="Driving License Number"
               rules={[{ required: true }]}
             >
               <Input />
             </Form.Item>
-
-
-
             <Form.Item
               name="password"
               label="Password"
@@ -110,7 +107,7 @@ function Register() {
               Register
             </button>
             <br />
-            <Link to={"/login"}>Click Here To Login</Link>
+            <Link to="/login">Click Here To Login</Link>
           </Form>
         </Col>
       </Row>

@@ -1,7 +1,8 @@
 import React from "react";
-import { Dropdown, Row, Col } from "antd";
+import { Dropdown, Row, Col, Layout } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import { Footer } from "antd/es/layout/layout";
+
+const { Footer } = Layout;
 
 function DefaultLayout(props) {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -9,7 +10,7 @@ function DefaultLayout(props) {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/");
+    navigate("/login", { replace: true }); // Use replace to avoid keeping the logout page in history
   };
 
   const items = [

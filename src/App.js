@@ -20,33 +20,32 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
+        
           {user ? (
             user.role === "Admin" ? (
-              <>
+              <Routes>
                 <Route path="/" element={<Navigate to="/admin" />} />
                 <Route path="/admin" element={<AdminHome />} />
                 <Route path="/addcar" element={<AddCar />} />
                 <Route path="/editcar/:carid" element={<EditCar />} />
                 <Route path="/allbookings" element={<AllBookings />} />
-              </>
+                </Routes>
             ) : (
-              <>
+              <Routes>
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/bookcar/:carid" element={<BookingCar />} />
                 <Route path="/userbookings" element={<UserBookings />} />
-              </>
+                </Routes>
             )
           ) : (
-            <>
+            <Routes>
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
-            </>
+              </Routes>
           )}
           <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
       </BrowserRouter>
     </div>
   );

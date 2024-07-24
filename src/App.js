@@ -14,14 +14,12 @@ import AllBookings from "./pages/AllBookings";
 
 function App() {
   axios.defaults.baseURL = "https://aryan-api.onrender.com";
-  // Get user details from local storage
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          {/* Conditional Routing Based on User Role */}
           {user ? (
             user.role === "Admin" ? (
               <>
@@ -46,7 +44,6 @@ function App() {
               <Route path="/register" element={<Register />} />
             </>
           )}
-          {/* Fallback Route */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

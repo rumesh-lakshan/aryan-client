@@ -4,20 +4,21 @@ import axios from "axios";
 export const userLogin = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
-  // const user = localStorage.getItem("user");
-  // const username = user.username;
-
   try {
     const response = await axios.post("/api/users/login", reqObj);
     localStorage.setItem("user", JSON.stringify(response.data));
-    message.success("Login Successfull");
+    message.success("Login Successful");
+    dispatch({ type: "LOADING", payload: false });
     setTimeout(() => {
       window.location.href = "/";
     }, 500);
-    dispatch({ type: "LOADING", payload: false });
   } catch (error) {
-    console.log(error);
-    error.response.data.message && message.error(error.response.data.message);
+    console.error(error);
+    if (error.response && error.response.data.message) {
+      message.error(error.response.data.message);
+    } else {
+      message.error("Something went wrong. Please try again.");
+    }
     dispatch({ type: "LOADING", payload: false });
   }
 };
@@ -26,16 +27,19 @@ export const userRegister = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    const response = await axios.post("/api/users/register", reqObj);
-    message.success("Registeration Successfull");
+    await axios.post("/api/users/register", reqObj);
+    message.success("Registration Successful");
+    dispatch({ type: "LOADING", payload: false });
     setTimeout(() => {
       window.location.href = "/login";
     }, 500);
-
-    dispatch({ type: "LOADING", payload: false });
   } catch (error) {
-    console.log(error);
-    error.response.data.message && message.error(error.response.data.message);
+    console.error(error);
+    if (error.response && error.response.data.message) {
+      message.error(error.response.data.message);
+    } else {
+      message.error("Something went wrong. Please try again.");
+    }
     dispatch({ type: "LOADING", payload: false });
   }
 };

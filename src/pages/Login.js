@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Form, Input } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/actions/userActions";
 import AOS from "aos";
@@ -11,11 +11,10 @@ AOS.init();
 
 function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { loading } = useSelector((state) => state.alertsReducer);
 
   function onFinish(values) {
-    dispatch(userLogin(values, navigate));
+    dispatch(userLogin(values));
     console.log(values);
   }
 

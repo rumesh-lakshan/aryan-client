@@ -1,7 +1,7 @@
 import { message } from "antd";
 import axios from "axios";
 
-export const userLogin = (reqObj) => async (dispatch) => {
+export const userLogin = (reqObj, navigate) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
@@ -10,7 +10,7 @@ export const userLogin = (reqObj) => async (dispatch) => {
     message.success("Login Successful");
     dispatch({ type: "LOADING", payload: false });
     setTimeout(() => {
-      window.location.href = "/";
+      navigate("/");
     }, 500);
   } catch (error) {
     console.error(error);
@@ -23,7 +23,7 @@ export const userLogin = (reqObj) => async (dispatch) => {
   }
 };
 
-export const userRegister = (reqObj) => async (dispatch) => {
+export const userRegister = (reqObj, navigate) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
@@ -31,7 +31,7 @@ export const userRegister = (reqObj) => async (dispatch) => {
     message.success("Registration Successful");
     dispatch({ type: "LOADING", payload: false });
     setTimeout(() => {
-      window.location.href = "/login";
+      navigate("/login");
     }, 500);
   } catch (error) {
     console.error(error);

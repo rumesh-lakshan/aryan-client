@@ -1,24 +1,27 @@
 import React from "react";
 import { Row, Col, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../redux/actions/userActions";
+import Spinner from "../components/Spinner";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 AOS.init();
 
 function Register() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  const onFinish = (values) => {
+  function onFinish(values) {
     if (values.password !== values.cpassword) {
       message.error("Password and Confirm Password do not match");
       return;
+    } else {
+      dispatch(userRegister(values, navigate));
     }
-    dispatch(userRegister(values));
-  };
+  }
 
   return (
     <div className="login" style={{ overflowX: "hidden" }}>
@@ -71,7 +74,7 @@ function Register() {
               Register
             </button>
             <br />
-            <Link to="/login">Click Here To Login</Link>
+            <Link to={"/login"}>Click Here To Login</Link>
           </Form>
         </Col>
       </Row>

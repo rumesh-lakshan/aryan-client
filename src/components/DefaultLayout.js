@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Dropdown, Row, Col } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
 
 function DefaultLayout(props) {
   const navigate = useNavigate();
-  const [loggedOut, setLoggedOut] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    setLoggedOut(true);
+    navigate("/login");
   };
 
   useEffect(() => {
-    if (loggedOut) {
+    if (!user) {
       navigate("/login");
     }
-  }, [loggedOut, navigate]);
+  }, [user, navigate]);
 
   const items = [
     {
@@ -50,7 +49,6 @@ function DefaultLayout(props) {
   ];
 
   if (!user) {
-    navigate("/login");
     return null;
   }
 

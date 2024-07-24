@@ -9,11 +9,12 @@ import UserBookings from "./pages/UserBookings";
 import AddCar from "./pages/AddCar";
 import AdminHome from "./pages/AdminHome";
 import EditCar from "./pages/EditCar";
-import axios from "axios";
 import AllBookings from "./pages/AllBookings";
+import axios from "axios";
+
+axios.defaults.baseURL = "https://aryan-api.onrender.com";
 
 function App() {
-  axios.defaults.baseURL = "https://aryan-api.onrender.com";
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (

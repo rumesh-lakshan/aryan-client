@@ -10,7 +10,7 @@ export const userLogin = (reqObj, navigate) => async (dispatch) => {
     message.success("Login Successful");
     dispatch({ type: "LOADING", payload: false });
     setTimeout(() => {
-      navigate("/");
+      navigate("/admin");
     }, 500);
   } catch (error) {
     console.error(error);

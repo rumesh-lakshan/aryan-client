@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ARYAN-CLIENT
+    env: static
+    buildCommand: npm run build
+    startCommand: npm run start
+    staticPublishPath: /path/to/build
+    routes:
+      - src: /(*)
+        dest: /index.html

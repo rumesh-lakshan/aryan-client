@@ -167,7 +167,7 @@ const AllBookings = () => {
       for (let i = 0; i < res.data.bookings.length; i++) {
         temp.push({
           key: res.data.bookings[i]._id,
-          name: res.data.bookings[i].car.name,
+
           category: res.data.bookings[i].car.category,
           username: res.data.bookings[i].user.username,
           bookingStatus: res.data.bookings[i].bookingStatus,

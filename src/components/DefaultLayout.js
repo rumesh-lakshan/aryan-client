@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Dropdown, Row, Col } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
@@ -6,18 +6,6 @@ import { Footer } from "antd/es/layout/layout";
 function DefaultLayout(props) {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/login");
-  };
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
-
   const items = [
     {
       key: "1",
@@ -28,8 +16,17 @@ function DefaultLayout(props) {
       label: <Link to="/userbookings">My Bookings</Link>,
     },
     {
-      key: "3",
-      label: <div onClick={handleLogout}>Logout</div>,
+      key: "4",
+      label: (
+        <li
+          onClick={() => {
+            localStorage.removeItem("user");
+            navigate("/login");
+          }}
+        >
+          Logout
+        </li>
+      ),
     },
   ];
 
@@ -44,16 +41,24 @@ function DefaultLayout(props) {
     },
     {
       key: "3",
-      label: <div onClick={handleLogout}>Logout</div>,
+      label: (
+        <li
+          onClick={() => {
+            localStorage.removeItem("user");
+            navigate("/login");
+          }}
+        >
+          Logout
+        </li>
+      ),
     },
   ];
-
-  if (!user) {
-    return null;
-  }
-
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div
+      style={{
+        overflowX: "hidden",
+      }}
+    >
       <div className="header bs1">
         <Row gutter={16} justify="center">
           <Col lg={20} sm={24} xs={24}>
@@ -97,6 +102,7 @@ function DefaultLayout(props) {
                   style={{
                     display: "flex",
                     alignItems: "center",
+
                     cursor: "pointer",
                   }}
                 >
@@ -118,7 +124,7 @@ function DefaultLayout(props) {
       </div>
       <div className="content">{props.children}</div>
       <Footer style={{ textAlign: "center" }}>
-        ARYAN RENT A CAR AND TOURS ©2024{" "}
+        ARYAN RENT A CAR AND TOURS ©2024 {" "}
         <span
           style={{
             color: "darkslategray",
@@ -127,7 +133,7 @@ function DefaultLayout(props) {
             fontWeight: "bold",
           }}
         >
-          | TriniphiX
+           | TriniphiX
         </span>
       </Footer>
     </div>

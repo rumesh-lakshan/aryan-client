@@ -36,20 +36,18 @@ function UserBookings() {
       setPage(value);
     }
   };
-  
-  const deleteHandler = (id) => {
-    axios
-      .delete(`/api/bookings/deletebooking/${id}`)
-      .then((res) => {
-        message.success("Booking Deleted Successfully");
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
-      })
-      .catch((err) => {
-        message.error("Something went wrong");
-      });
-  };
+
+ const deleteHandler = (id) => {
+  axios
+    .delete(`/api/bookings/deletebooking/${id}`)
+    .then((res) => {
+      message.success("Booking Deleted Successfully");
+      dispatch(getAllBookings());
+    })
+    .catch((err) => {
+      message.error("Something went wrong");
+    });
+};
 
   return (
     <DefaultLayout>

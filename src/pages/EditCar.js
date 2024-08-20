@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import { Col, Row, Form, Input, message, Select, Space } from "antd";
 import Spinner from "../components/Spinner";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function EditCar({ match }) {
   const { carid } = useParams();
-
+  const navigate = useNavigate();
   //Get existing car details
   const [name, setName] = useState("");
   const [rentPerHour, setRentPerHour] = useState("");
@@ -83,18 +83,13 @@ function EditCar({ match }) {
       data.image = image;
     }
 
-    await axios
-      .patch(`/api/cars/editcar`, data)
-      .then((res) => {
-        //success message
-        message.success("Car details Updated Succesfully");
-        setTimeout(() => {
-          window.location.href = "/admin";
-        }, 500);
+      await axios.patch(`/api/cars/editcar`, data).then((res) => {
+        message.success("Car details Updated Successfully");
+        navigate("/admin");
       })
       .catch((err) => {
         console.log(err);
-        isLoading(false);
+        setIsLoading(false);
       });
   };
 

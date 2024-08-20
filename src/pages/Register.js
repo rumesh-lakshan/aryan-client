@@ -6,23 +6,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../redux/actions/userActions";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
+import { userRegister } from '../redux/actions/userActions';
 // ..
 AOS.init();
 
 function Register() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { loading } = useSelector((state) => state.alertsReducer);
 
-  function onFinish(values) {
-    //check if password and confirm password are same
-    if (values.password !== values.cpassword) {
-      message.error("Password and Confirm Password do not match");
-      return;
-    } else {
-      dispatch(userRegister(values));
+  const onFinish = async (values) => {
+    try {
+      const success = await dispatch(userRegister(values));
+      if (success) {
+        setTimeout(() => {
+          navigate('/login');
+        }, 500);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div

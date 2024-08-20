@@ -27,15 +27,13 @@ export const userRegister = (reqObj) => async (dispatch) => {
 
   try {
     const response = await axios.post("/api/users/register", reqObj);
-    message.success("Registeration Successfull");
-    setTimeout(() => {
-      window.location.href = "/login";
-    }, 500);
-
+    message.success("Registration Successful");
     dispatch({ type: "LOADING", payload: false });
+    return true; // Indicate success
   } catch (error) {
     console.log(error);
     error.response.data.message && message.error(error.response.data.message);
     dispatch({ type: "LOADING", payload: false });
+    return false; // Indicate failure
   }
 };

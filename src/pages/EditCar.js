@@ -87,14 +87,11 @@ function EditCar({ match }) {
       .patch(`/api/cars/editcar`, data)
       .then((res) => {
         //success message
-        message.success("Car details Updated Succesfully");
-        setTimeout(() => {
-          window.location.href = "/admin";
-        }, 500);
+        message.success("Car details Updated Successfully");
       })
       .catch((err) => {
         console.log(err);
-        isLoading(false);
+        setIsLoading(false);
       });
   };
 

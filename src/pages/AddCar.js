@@ -39,8 +39,7 @@ function AddCar() {
         values.category = category;
         values.bookedTimeSlots = [];
     
-        const success = dispatch(addCar(values));
-        console.log(success + 'success message')
+        const success = await dispatch(addCar(values));
         if (success) {
           navigate('/admin');
         }

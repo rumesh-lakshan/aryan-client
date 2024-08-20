@@ -19,6 +19,8 @@ import { bookCar } from "../redux/actions/bookingActions";
 import dayjs from "dayjs";
 import "aos/dist/aos.css";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 const { RangePicker } = DatePicker;
 
@@ -34,6 +36,7 @@ function BookingCar({ match }) {
   const [driver, setdriver] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [dateRange, setDateRange] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cars.length === 0) {
@@ -57,7 +60,7 @@ function BookingCar({ match }) {
     setTotalDays(values[1].diff(values[0], "days") + 1); // Adding 1 to include the start day
   }
 
-  function bookNow() {
+  async function bookNow() {
     const reqObj = {
       user: JSON.parse(localStorage.getItem("user"))._id,
       car: car._id,
@@ -69,7 +72,11 @@ function BookingCar({ match }) {
         to,
       },
     };
-    dispatch(bookCar(reqObj));
+    
+    const success = await dispatch(bookCar(reqObj));
+    if (success) {
+      navigate('/userbookings');
+    }
   }
 
   // Popup Modal

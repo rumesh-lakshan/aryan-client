@@ -7,12 +7,15 @@ import dayjs from "dayjs";
 import Spinner from "../components/Spinner";
 import axios from "axios";
 import moment from "moment";
+import { useNavigate } from 'react-router-dom';
+
 
 function UserBookings() {
   const dispatch = useDispatch();
   const { bookings } = useSelector((state) => state.bookingsReducer);
   const user = JSON.parse(localStorage.getItem("user"));
   const { loading } = useSelector((state) => state.alertsReducer);
+  const navigate = useNavigate();
 
   const [page, setPage] = useState(1);
 
@@ -38,9 +41,9 @@ function UserBookings() {
     axios
       .delete(`/api/bookings/deletebooking/${id}`)
       .then((res) => {
-        message.success("Car Deleted Succesfully");
+        message.success("Booking Deleted Successfully");
         setTimeout(() => {
-          window.location.href = "/userbookings";
+          navigate('/userbookings');
         }, 500);
       })
       .catch((err) => {

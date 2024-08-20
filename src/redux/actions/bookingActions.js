@@ -8,7 +8,7 @@ export const bookCar = (reqObj) => async (dispatch) => {
     await axios.post("/api/bookings/bookcar", reqObj);
     dispatch({ type: "LOADING", payload: false });
     message.success("Your car booked successfully");
-    dispatch({ type: "REDIRECT", payload: "/userbookings" });
+    dispatch({ type: "REDIRECT", payload: "/home" });
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });

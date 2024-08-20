@@ -127,18 +127,18 @@ function DefaultLayout(props) {
       </div>
       <div className="content">{props.children}</div>
       <Footer style={{ textAlign: "center" }}>
-        ARYAN RENT A CAR AND TOURS ©2024 {" "}
-        <span
-          style={{
-            color: "darkslategray",
-            letterSpacing: "1.5px",
-            fontSize: "14px",
-            fontWeight: "bold",
-          }}
-        >
-           | TriniphiX
-        </span>
-      </Footer>
+  ARYAN RENT A CAR AND TOURS ©2024 {" "}
+  <span
+    style={{
+      color: "darkslategray",
+      letterSpacing: "1.5px",
+      fontSize: "14px",
+      fontWeight: "bold",
+    }}
+  >
+    | <a href="https://www.facebook.com/profile.php?id=100093625762062" target="_blank" rel="noopener noreferrer">TriniphiX</a>
+  </span>
+</Footer>
     </div>
   );
 }

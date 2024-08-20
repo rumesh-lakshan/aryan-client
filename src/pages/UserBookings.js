@@ -97,48 +97,6 @@ function UserBookings() {
                         height: "200px",
                       }}
                     >
-                      {booking && booking.car ? (
-  booking.car.image ? (
-    <img
-      src={booking.car.image}
-      style={{
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        borderRadius: "20px 0px 0px 20px",
-      }}
-      alt={booking.car.name}
-    />
-  ) : (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#f0f0f0",
-        borderRadius: "20px 0px 0px 20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      No Image Available
-    </div>
-  )
-) : (
-  <div
-    style={{
-      width: "100%",
-      height: "100%",
-      backgroundColor: "#f0f0f0",
-      borderRadius: "20px 0px 0px 20px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    No Car Data Available
-  </div>
-)}
                     </div>
 
                     <div

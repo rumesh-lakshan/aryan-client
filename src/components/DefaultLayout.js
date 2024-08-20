@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown, Row, Col } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
-import  logo  from '../../public/aryanLogo.png'
+import  logo  from '../assets/aryanLogo.png'
 
 function DefaultLayout(props) {
   const navigate = useNavigate();

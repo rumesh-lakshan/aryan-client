@@ -78,8 +78,10 @@ function UserBookings() {
           .filter((booking) => booking.user._id === user._id)
           .slice((page - 1) * 4, page * 4)
           .map((booking) => {
+            const car = booking.car || {}; // Fallback to an empty object if booking.car is null/undefined
             return (
               <div
+                key={booking._id}
                 style={{
                   boxShadow:
                     "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
@@ -96,9 +98,9 @@ function UserBookings() {
                     height: "200px",
                   }}
                 >
-                  {booking.car.image ? (
+                  {car.image ? (
                     <img
-                      src={booking.car.image}
+                      src={car.image}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -132,7 +134,7 @@ function UserBookings() {
                     fontSize: "12px",
                   }}
                 >
-                  <h5>{booking.car.name || "Unnamed Car"}</h5>
+                  <h5>{car.name || "Unnamed Car"}</h5>
                   <p>
                     From :{" "}
                     <b>
@@ -219,6 +221,7 @@ function UserBookings() {
     onChange={handlePaginationChange}
   />
 </DefaultLayout>
+
 
   );
 }

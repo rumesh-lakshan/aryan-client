@@ -21,7 +21,7 @@ function DefaultLayout(props) {
         <li
           onClick={() => {
             localStorage.removeItem("user");
-            navigate("/login");
+            navigate("/");
           }}
         >
           Logout
@@ -45,7 +45,7 @@ function DefaultLayout(props) {
         <li
           onClick={() => {
             localStorage.removeItem("user");
-            navigate("/login");
+            navigate("/");
           }}
         >
           Logout

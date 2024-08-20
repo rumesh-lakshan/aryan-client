@@ -40,6 +40,7 @@ function AddCar() {
         values.bookedTimeSlots = [];
     
         const success = dispatch(addCar(values));
+        console.log(success + 'success message')
         if (success) {
           navigate('/admin');
         }

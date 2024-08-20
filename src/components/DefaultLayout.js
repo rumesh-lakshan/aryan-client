@@ -2,6 +2,7 @@ import React from "react";
 import { Dropdown, Row, Col } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "antd/es/layout/layout";
+import {logo} from '../../public/aryanLogo.png'
 
 function DefaultLayout(props) {
   const navigate = useNavigate();
@@ -81,7 +82,7 @@ function DefaultLayout(props) {
                     }}
                   >
                     <img
-                      src="https://scontent.fcmb11-1.fna.fbcdn.net/v/t39.30808-6/387116704_274213878913965_6230411355225359284_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH0jLcnpDTeCWxcYOqQ14OjBYKdQ-bJ0TUFgp1D5snRNVzHbjDpTwmGcm_Tt29A3tvqBKwYK73YkQ6RHt5znrII&_nc_ohc=LriB8SupkM4Q7kNvgE6ZZwG&_nc_zt=23&_nc_ht=scontent.fcmb11-1.fna&oh=00_AYDfvFVmueM4OdbZnEKKXr2hm9qOEcwBlJu40nK00wMHog&oe=666B095F"
+                      src={logo}
                       alt="logo"
                       style={{
                         width: "60px",

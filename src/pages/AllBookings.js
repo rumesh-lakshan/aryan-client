@@ -167,9 +167,9 @@ const AllBookings = () => {
       for (let i = 0; i < res.data.bookings.length; i++) {
         temp.push({
           key: res.data.bookings[i]._id,
-
-          category: res.data.bookings[i].car.category,
-          username: res.data.bookings[i].user.username,
+          name: res.data.bookings[i].car?.name,
+          category: res.data.bookings[i].car?.category,
+          username: res.data.bookings[i].user?.username,
           bookingStatus: res.data.bookings[i].bookingStatus,
           tags: [
             "FROM:",
@@ -181,7 +181,7 @@ const AllBookings = () => {
               "DD-MM-YYYY hh:mm A"
             ),
           ],
-          image: res.data.bookings[i].car.image,
+          image: res.data.bookings[i].car?.image,
           amount: res.data.bookings[i].totalAmount + " LKR",
         });
       }

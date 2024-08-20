@@ -7,15 +7,12 @@ export const bookCar = (reqObj) => async (dispatch) => {
   try {
     await axios.post("/api/bookings/bookcar", reqObj);
     dispatch({ type: "LOADING", payload: false });
-
-    setTimeout(() => {
-      message.success("Your Car booked Successfull");
-      window.location.href = "/userbookings";
-    }, 500);
+    message.success("Your car booked successfully");
+    dispatch({ type: "REDIRECT", payload: "/userbookings" });
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });
-    message.error("something went wrong.please try again later");
+    message.error("Something went wrong. Please try again later.");
   }
 };
 

@@ -15,20 +15,18 @@ export const getAllCars = () => async (dispatch) => {
 };
 
 export const addCar = (reqObj) => async (dispatch) => {
-  console.log(reqObj);
   dispatch({ type: "LOADING", payload: true });
 
   try {
     await axios.post("/api/cars/addcar", reqObj);
 
     dispatch({ type: "LOADING", payload: false });
-    message.success("New car added succesfully");
-    setTimeout(() => {
-      window.location.href = "/admin";
-    }, 500);
+    message.success("New car added successfully");
+    dispatch({ type: "REDIRECT", payload: "/admin" });
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });
+    message.error("Failed to add new car");
   }
 };
 
@@ -36,15 +34,14 @@ export const deleteCar = (reqObj) => async (dispatch) => {
   dispatch({ type: "LOADING", payload: true });
 
   try {
-    await axios.delete(`/api/cars/deletecar/${reqObj.carid}`, reqObj);
+    await axios.delete(`/api/cars/deletecar/${reqObj.carid}`);
 
     dispatch({ type: "LOADING", payload: false });
-    message.success("Car Deleted Succesfully");
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    message.success("Car deleted successfully");
+    dispatch({ type: "REFRESH_DATA" });
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });
+    message.error("Failed to delete car");
   }
 };

@@ -39,6 +39,8 @@ export const deleteCar = (reqObj) => async (dispatch) => {
     dispatch({ type: "LOADING", payload: false });
     message.success("Car deleted successfully");
     dispatch({ type: "REFRESH_DATA" });
+    // Dispatch an action to refresh the car list instead of reloading
+    dispatch(getAllCars());
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });

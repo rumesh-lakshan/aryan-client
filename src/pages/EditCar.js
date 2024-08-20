@@ -86,9 +86,7 @@ function EditCar({ match }) {
     await axios
     .patch(`/api/cars/editcar`, data)
     .then((res) => {
-      //success message
       message.success("Car details Updated Successfully");
-      // Navigate to /admin after successful update
       navigate("/admin");
     })
     .catch((err) => {

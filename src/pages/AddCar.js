@@ -38,8 +38,12 @@ function AddCar() {
         values.image = res.secure_url;
         values.category = category;
         values.bookedTimeSlots = [];
-    
-        const success = await dispatch(addCar(values));
+      
+        const success = await new Promise((resolve) => {
+          dispatch(addCar(values))
+            .then((result) => resolve(result));
+        });
+        
         if (success) {
           navigate('/admin');
         }

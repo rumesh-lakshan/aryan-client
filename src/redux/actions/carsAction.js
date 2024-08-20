@@ -19,15 +19,14 @@ export const addCar = (reqObj) => async (dispatch) => {
 
   try {
     await axios.post("/api/cars/addcar", reqObj);
-
     dispatch({ type: "LOADING", payload: false });
     message.success("New car added successfully");
-    return true; // Indicate success
+    return true;
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });
     message.error("Failed to add new car");
-    return false; // Indicate failure
+    return false;
   }
 };
 

@@ -18,14 +18,14 @@ function DefaultLayout(props) {
     {
       key: "4",
       label: (
-        <li
+        <span
           onClick={() => {
             localStorage.removeItem("user");
-            navigate("/");
+            navigate("/login");
           }}
         >
           Logout
-        </li>
+        </span>
       ),
     },
   ];
@@ -40,16 +40,16 @@ function DefaultLayout(props) {
       label: <Link to="/allbookings">All Bookings</Link>,
     },
     {
-      key: "3",
+      key: "4",
       label: (
-        <li
+        <span
           onClick={() => {
             localStorage.removeItem("user");
-            navigate("/");
+            navigate("/login");
           }}
         >
           Logout
-        </li>
+        </span>
       ),
     },
   ];

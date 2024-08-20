@@ -108,7 +108,7 @@ function UserBookings() {
                         fontSize: "12px",
                       }}
                     >
-                      <h5>{booking.car.name}</h5>
+                      
                       <p>
                         From :{" "}
                         <b>

@@ -4,6 +4,8 @@ import { Col, Row, Form, Input, Select, Space } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addCar } from "../redux/actions/carsAction";
 import Spinner from "../components/Spinner";
+import { useNavigate } from 'react-router-dom';
+
 
 function AddCar() {
   const [image, setImage] = useState();
@@ -11,6 +13,7 @@ function AddCar() {
   const [imageFile, setImageFile] = useState();
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
+  const navigate = useNavigate();
 
   // const preset_key = "jxd093tt";
   // const cloud_name = "dx1pvvqg7";
@@ -31,12 +34,15 @@ function AddCar() {
       body: formData,
     })
       .then((res) => res.json())
-      .then((res) => {
+      .then(async (res) => {
         values.image = res.secure_url;
         values.category = category;
         values.bookedTimeSlots = [];
-
-        dispatch(addCar(values));
+    
+        const success = dispatch(addCar(values));
+        if (success) {
+          navigate('/admin');
+        }
       })
       .catch((err) => {
         console.log(err);

@@ -22,11 +22,12 @@ export const addCar = (reqObj) => async (dispatch) => {
 
     dispatch({ type: "LOADING", payload: false });
     message.success("New car added successfully");
-    dispatch({ type: "REDIRECT", payload: "/admin" });
+    return true; // Indicate success
   } catch (error) {
     console.log(error);
     dispatch({ type: "LOADING", payload: false });
     message.error("Failed to add new car");
+    return false; // Indicate failure
   }
 };
 

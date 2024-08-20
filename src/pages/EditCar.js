@@ -84,15 +84,17 @@ function EditCar({ match }) {
     }
 
     await axios
-      .patch(`/api/cars/editcar`, data)
-      .then((res) => {
-        //success message
-        message.success("Car details Updated Successfully");
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-      });
+    .patch(`/api/cars/editcar`, data)
+    .then((res) => {
+      //success message
+      message.success("Car details Updated Successfully");
+      // Navigate to /admin after successful update
+      navigate("/admin");
+    })
+    .catch((err) => {
+      console.log(err);
+      setIsLoading(false);
+    });
   };
 
   return (

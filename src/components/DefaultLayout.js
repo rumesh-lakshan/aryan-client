@@ -21,7 +21,7 @@ function DefaultLayout(props) {
         <span
           onClick={() => {
             localStorage.removeItem("user");
-            navigate("/login");
+            navigate("/");
             window.location.reload();
           }}
         >
@@ -46,7 +46,7 @@ function DefaultLayout(props) {
         <span
           onClick={() => {
             localStorage.removeItem("user");
-            navigate("/login");
+            navigate("/");
             window.location.reload();
           }}
         >

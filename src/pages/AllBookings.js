@@ -27,6 +27,28 @@ const AllBookings = () => {
     }
   };
 
+  const declineBooking = (bookingId) => {
+    axios.patch(`/api/bookings/declineBooking/${bookingId}`)
+      .then((res) => {
+        message.success("Booking Declined");
+        getAllBookings(); // Re-fetch the bookings after declining
+      })
+      .catch(err => {
+        message.error("Failed to decline booking");
+        console.error('Error declining booking:', err);
+      });
+  };
+  const confirmBooking = (bookingId) => {
+    axios.patch(`/api/bookings/confirmBooking/${bookingId}`)
+      .then((res) => {
+        message.success("Booking Confirmed");
+        getAllBookings(); // Re-fetch the bookings after confirming
+      })
+      .catch(err => {
+        message.error("Failed to confirm booking");
+        console.error('Error confirming booking:', err);
+      });
+  };
   const columns = [
     {
       title: "Image",
@@ -101,52 +123,38 @@ const AllBookings = () => {
             // approve & decline buttons
             <div className="d-flex">
               <button
-                onClick={() => {
-                  axios
-                    .patch(`/api/bookings/confirmBooking/${key.key}`)
-                    .then((res) => {
-                      message.success("Booking Confirmed");
-                      window.location.reload();
-                    });
-                }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "50%",
-                  width: "30px",
-                  height: "30px",
-                  border: "1px solid green",
-                  color: "green",
-                  backgroundColor: "white",
-                }}
-              >
-                <CheckOutlined />
-              </button>
+        onClick={() => confirmBooking(key.key)}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "50%",
+          width: "30px",
+          height: "30px",
+          border: "1px solid green",
+          color: "green",
+          backgroundColor: "white",
+        }}
+      >
+        <CheckOutlined />
+      </button>
               <button
-                onClick={() => {
-                  axios
-                    .patch(`/api/bookings/declineBooking/${key.key}`)
-                    .then((res) => {
-                      message.success("Booking Declined");
-                      window.location.reload();
-                    });
-                }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: "50%",
-                  width: "30px",
-                  height: "30px",
-                  border: "1px solid red",
-                  color: "red",
-                  marginLeft: "10px",
-                  backgroundColor: "white",
-                }}
-              >
-                <CloseOutlined />
-              </button>
+      onClick={() => declineBooking(key.key)}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "50%",
+        width: "30px",
+        height: "30px",
+        border: "1px solid red",
+        color: "red",
+        marginLeft: "10px",
+        backgroundColor: "white",
+      }}
+    >
+      <CloseOutlined />
+    </button>
             </div>
           ) : bookingStatus === "Confirmed" ? (
             <Tag color="green">{bookingStatus.toUpperCase()}</Tag>

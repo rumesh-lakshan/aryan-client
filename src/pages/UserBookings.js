@@ -36,14 +36,14 @@ function UserBookings() {
       setPage(value);
     }
   };
-
+  
   const deleteHandler = (id) => {
     axios
       .delete(`/api/bookings/deletebooking/${id}`)
       .then((res) => {
         message.success("Booking Deleted Successfully");
         setTimeout(() => {
-          navigate('/userbookings');
+          window.location.reload();
         }, 500);
       })
       .catch((err) => {
